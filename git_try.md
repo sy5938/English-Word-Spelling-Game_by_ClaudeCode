@@ -204,6 +204,55 @@ fatal: the requested upstream branch 'origin/main' does not exist
 ```
 **解决**: 先拉取远程更改 `git pull origin main` 再推送
 
+### 问题5: GitHub敏感信息保护
+```
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: - GITHUB PUSH PROTECTION
+remote:   Push cannot contain secrets
+```
+**场景**: 不小心在代码中包含了API密钥、个人访问令牌等敏感信息
+**解决方案**:
+
+#### 方案A: 重写Git历史 (推荐)
+```bash
+# 1. 查看提交历史，确定需要修改哪些提交
+git log --oneline
+#输出：
+b98894c (HEAD -> main, origin/main) docs: 添加Git学习文档和Claude配置
+d125050 feat: 初始化单词拼写背诵游戏项目
+
+# 2. 重置到包含敏感信息之前的提交
+git reset --soft <clean-commit-hash>
+#git reset --soft d125050
+
+# 3. 重新暂存并提交（确保已移除敏感信息）
+git add .
+git commit -m "新的干净提交信息"
+
+# 4. 强制推送覆盖远程历史
+git push origin main --force
+```
+
+#### 方案B: 交互式历史重写
+```bash
+# 交互式重写最近3个提交
+git rebase -i HEAD~3
+
+# 在编辑器中将需要修改的提交标记为 'edit'
+# 然后对每个提交进行修改
+git commit --amend -m "修改后的提交信息"
+git rebase --continue
+```
+
+#### 方案C: 使用GitHub提供的链接
+- GitHub会提供一个临时链接允许推送包含敏感信息的提交
+- 但不推荐，应该从源头解决安全问题
+
+**⚠️ 重要提醒**:
+- `git push --force` 会覆盖远程仓库历史，团队协作时需谨慎使用
+- 重写历史后，其他协作者需要重新同步代码
+- 最好的做法是从一开始就不要提交敏感信息
+
 ## 🎯 最佳实践
 
 1. **提交信息规范**:
