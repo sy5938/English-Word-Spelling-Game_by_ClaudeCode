@@ -109,6 +109,18 @@ git remote add origin https://github.com/sy5938/English-Word-Spelling-Game_by_Cl
 ```bash
 git push https://ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@github.com/sy5938/English-Word-Spelling-Game_by_ClaudeCode.git main
 ```
+
+#### 设置上游分支
+ git push -u origin main
+  说明: -u 是 --set-upstream 的简写，设置后以后就可以直接用 git push 了
+
+  但你需要身份验证，所以完整命令是：
+  git push -u
+  https://ghp_xxxxxxxx@github.com/sy5938/English-Word-Spelling-Game_by_ClaudeCode.git
+  main
+
+
+
 **作用**: 将本地 main 分支推送到GitHub远程仓库
 **说明**: 
 - 这里使用了个人访问令牌(PAT)进行身份验证
