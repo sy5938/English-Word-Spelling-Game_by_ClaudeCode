@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词拼写游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎯 单词拼写游戏</h1>
+            <div class="stats">
+                <span class="score">得分: <span id="score">0</span></span>
+                <span class="level">关卡: <span id="level">1</span></span>
+                <span class="streak">连击: <span id="streak">0</span></span>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <!-- 开始屏幕 -->
+            <div id="start-screen" class="screen active">
+                <h2>欢迎来到单词拼写游戏!</h2>
+                <p>听音频或看释义，输入正确的单词拼写</p>
+                <button id="start-btn" class="btn btn-primary">开始游戏</button>
+                <button id="settings-btn" class="btn btn-secondary">设置</button>
+            </div>
+
+            <!-- 游戏屏幕 -->
+            <div id="game-screen" class="screen">
+                <div class="word-card">
+                    <div class="word-info">
+                        <h3 id="word-meaning">单词释义将显示在这里</h3>
+                        <div class="audio-controls">
+                            <button id="play-audio" class="btn btn-audio">🔊 播放发音</button>
+                        </div>
+                    </div>
+                    
+                    <div class="input-area">
+                        <input type="text" id="word-input" placeholder="请输入单词拼写..." maxlength="20">
+                        <div class="input-feedback" id="input-feedback"></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="submit-btn" class="btn btn-primary">提交</button>
+                        <button id="hint-btn" class="btn btn-secondary">提示</button>
+                        <button id="skip-btn" class="btn btn-warning">跳过</button>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="progress-text">1 / 10</span>
+                </div>
+            </div>
+
+            <!-- 结果屏幕 -->
+            <div id="result-screen" class="screen">
+                <div class="result-card">
+                    <h2 id="result-title">答案正确!</h2>
+                    <div class="correct-word">
+                        <span id="correct-spelling"></span>
+                        <button id="result-audio" class="btn btn-audio">🔊</button>
+                    </div>
+                    <p id="result-meaning"></p>
+                    <div class="result-actions">
+                        <button id="next-btn" class="btn btn-primary">下一题</button>
+                        <button id="review-btn" class="btn btn-secondary">复习错词</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设置屏幕 -->
+            <div id="settings-screen" class="screen">
+                <h2>游戏设置</h2>
+                <div class="settings-options">
+                    <div class="option">
+                        <label for="difficulty">难度级别:</label>
+                        <select id="difficulty">
+                            <option value="easy">简单</option>
+                            <option value="medium">中等</option>
+                            <option value="hard">困难</option>
+                        </select>
+                    </div>
+                    <div class="option">
+                        <label for="words-per-round">每轮单词数:</label>
+                        <select id="words-per-round">
+                            <option value="5">5个</option>
+                            <option value="10" selected>10个</option>
+                            <option value="20">20个</option>
+                        </select>
+                    </div>
+                    <div class="option">
+                        <label>
+                            <input type="checkbox" id="auto-play-audio" checked>
+                            自动播放发音
+                        </label>
+                    </div>
+                </div>
+                <button id="back-to-start" class="btn btn-primary">返回</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>继续努力，提升你的词汇量! 💪</p>
+        </footer>
+    </div>
+
+    <script src="js/words.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

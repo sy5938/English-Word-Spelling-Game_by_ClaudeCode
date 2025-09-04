@@ -1,0 +1,361 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部样式 */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    color: #4a5568;
+    margin-bottom: 15px;
+    font-size: 2.5em;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats span {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* 主游戏区域 */
+.game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.screen {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 开始屏幕 */
+#start-screen h2 {
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+#start-screen p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    color: #4a5568;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+    color: #2d3436;
+}
+
+.btn-audio {
+    background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+/* 游戏屏幕 */
+.word-card {
+    margin-bottom: 30px;
+}
+
+.word-info {
+    margin-bottom: 25px;
+}
+
+.word-info h3 {
+    font-size: 1.8em;
+    color: #4a5568;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.audio-controls {
+    margin: 20px 0;
+}
+
+.input-area {
+    margin-bottom: 25px;
+}
+
+#word-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px 20px;
+    border: 3px solid #e2e8f0;
+    border-radius: 25px;
+    font-size: 1.3em;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#word-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: scale(1.02);
+}
+
+.input-feedback {
+    margin-top: 10px;
+    font-weight: bold;
+    min-height: 20px;
+    transition: all 0.3s ease;
+}
+
+.input-feedback.correct {
+    color: #38a169;
+}
+
+.input-feedback.incorrect {
+    color: #e53e3e;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 进度条 */
+.progress {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+#progress-text {
+    color: #666;
+    font-weight: bold;
+}
+
+/* 结果屏幕 */
+.result-card h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+.correct-word {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.result-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* 设置屏幕 */
+#settings-screen h2 {
+    color: #4a5568;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.settings-options {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+.option {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 10px;
+}
+
+.option label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+.option select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1em;
+    background: white;
+}
+
+.option input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* 底部样式 */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .screen {
+        padding: 20px;
+    }
+    
+    #word-input {
+        font-size: 1.1em;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 80%;
+        max-width: 200px;
+    }
+}
+
+/* 动画效果 */
+.bounce {
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
